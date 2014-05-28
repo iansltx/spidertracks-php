@@ -22,6 +22,8 @@ $stClient = new SpiderTracksClient('username', 'password');
 
 where the username and password are the credentials used to log into http://go.spidertracks.com.
 
+__NOTE:__ By default, SpiderTracks retrieves the "heartbeat" data feed rather than the one associated with your account. If you're seeing latitude/longitude pairs in New Zealand with an IMEI of 300234060658720, contact SpiderTracks and ask them for your device's actual feed, rather than the heartbeat one.
+
 To get track data since a given date, pass in a DateTime to getSince:
 
 ````
@@ -42,8 +44,6 @@ Known Issues
 ------------
 
 Currently there is no special handling for record counts at or above 1000 (the API will only show 999 positions at a time). The easiest workaround is to, for instances where the response array is that length, take the date field from the last entry and use it as the parameter for another call (or many) to getSince().
-
-Also, in testing I'm getting what appears to be heartbeat/sample data back from the API. This may be an account setup issue rather than a client issue.
 
 Other Notes
 -----------
