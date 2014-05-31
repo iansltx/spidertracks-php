@@ -17,8 +17,8 @@ class SpiderTracksClient
     /** retrieves and array-formats position data collected since $sinceDate **/
     public function getSince(DateTime $sinceDate) {
         $requestBody = '<?xml version="1.0" encoding="utf-8"?>
-            <data xmlns="https://aff.gov/affSchema" sysId="'.$sysId.'" rptTime="'.date('c').'" version="2.23"> 
-             <msgRequest to="spidertracks" from="'.$sysId.'" msgType="Data Request" subject="Async"
+            <data xmlns="https://aff.gov/affSchema" sysId="'.$this->sysId.'" rptTime="'.date('c').'" version="2.23"> 
+             <msgRequest to="spidertracks" from="'.$this->sysId.'" msgType="Data Request" subject="Async"
              dateTime="'.$sinceDate->format('c').'"><body>'.$sinceDate->format('c').'</body></msgRequest></data>';     
         
         $ch = curl_init(self::$url);
